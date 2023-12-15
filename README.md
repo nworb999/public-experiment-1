@@ -17,3 +17,17 @@ everything in the `src` repo is used by the server
 <img width="1512" alt="broken-state-1" src="https://github.com/nworb999/public-experiment-1/assets/20407156/1cab66a9-c965-4815-822e-2ec30e1c3245">
 
 ![broken-state-2](https://github.com/nworb999/public-experiment-1/assets/20407156/28bd9914-25a5-47b9-80cb-02390075b4c5)
+
+## debugging
+
+if you get 
+
+```
+node:internal/modules/cjs/loader:1078
+  throw err;
+  ^
+
+Error: Cannot find module '../lib/cli'
+```
+
+remove the `node_modules/` repo and rerun `npm install`
