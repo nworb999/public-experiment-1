@@ -1,5 +1,7 @@
 # public experiment #1
 
+**public experiment #1** is a node.js-powered p5.js sketch simulating cafeteria dynamics for nine characters with different personalities.
+
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 This work is licensed under a
