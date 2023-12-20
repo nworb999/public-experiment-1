@@ -121,6 +121,7 @@ export class Game {
         });
       });
     });
+    console.log(conversations);
     this.outcomes = conversations;
   }
 
@@ -160,7 +161,7 @@ export class Game {
       rightTable: this.rightTable.getState(),
       toilet: this.toilet.getState(),
       state: this.state,
-      memory: this.memory, // maybe unneeded
+      // memory: this.memory, // maybe unneeded
       turn: this.turn,
       outcomes: this.outcomes,
     };

@@ -1,11 +1,11 @@
 import { ChatService } from "./chatService.js";
 
-export class DumbChatService extends ChatService {
+export class SimpleChatService extends ChatService {
   constructor() {
     super();
   }
 
-  async sendPrompt(prompt) {
+  sendPrompt(prompt) {
     const { characters, topic } = prompt;
     const scores = {};
     for (const character in characters) {
@@ -25,7 +25,7 @@ export class DumbChatService extends ChatService {
         }
       }
     }
-
+    console.log("simple service scores", scores);
     return scores;
   }
 }

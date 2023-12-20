@@ -1,5 +1,7 @@
 # public experiment #1
 
+
+
 * clone the repo 
 
 * create `.env` file using `.env.example` and add your chatGPT API key
@@ -17,6 +19,17 @@ everything in the `src` repo is used by the server
 <img width="1512" alt="broken-state-1" src="https://github.com/nworb999/public-experiment-1/assets/20407156/1cab66a9-c965-4815-822e-2ec30e1c3245">
 
 ![broken-state-2](https://github.com/nworb999/public-experiment-1/assets/20407156/28bd9914-25a5-47b9-80cb-02390075b4c5)
+
+## known issues
+
+not working with any chat services other than simple service
+
+## reflections
+
+debugging was a pain with unfamiliar code
+should have started with all layers (api, domain model, frontend/backend services) then added game logic + p5.js draw logic
+should have realized sooner that chatGPT was not going to be an option without $$$
+created issues with async handling that never got resolved but will have to be considered (waiting to store memories for the conversation results)
 
 ## debugging
 

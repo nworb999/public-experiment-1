@@ -17,7 +17,7 @@ import {
   bathroom,
 } from "./constants.js";
 import { rateLimit } from "./src/middleware/rateLimit.js";
-import { DumbChatService } from "./src/backend-services/dumbService.js";
+import { SimpleChatService } from "./src/backend-services/simpleService.js";
 
 dotenv.config();
 
@@ -27,9 +27,9 @@ dotenv.config();
 // const huggingFace = new HfInference(process.env.HUGGING_FACE_API_KEY);
 // const huggingFaceChatService = new HuggingFaceChatService(huggingFace);
 
-const dumbChatService = new DumbChatService();
+const simpleChatService = new SimpleChatService();
 
-setChatService(dumbChatService);
+setChatService(simpleChatService);
 
 const app = express();
 const httpServer = createServer(app);

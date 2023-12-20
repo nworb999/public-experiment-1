@@ -1,26 +1,28 @@
 import express from "express";
 import { ChatService } from "../backend-services/chatService.js";
-import { runDumbConversationPrompts } from "../utils/prompts.js";
+import { runSimpleConversationPrompts } from "../utils/prompts.js";
 
 const router = express.Router();
 
 export let chatService = new ChatService();
 
-router.post("/prompt", async (req, res) => {
+router.post("/prompt", (req, res) => {
   try {
     const gameState = req.body.gameState;
 
-    // for use with not dumb chat services
+    // for use with not simple chat services
     // const { leftTableResponse, rightTableResponse } =
     //   runConversationPrompts(gameState);
 
     const { leftTableResponse, rightTableResponse } =
-      await runDumbConversationPrompts(gameState);
-
-    const response = {
+      runSimpleConversationPrompts(gameState);
+    console.log(`${new Date().toISOString()} returning  prompt responses`);
+    console.log({ leftTableResponse });
+    console.log({ rightTableResponse });
+    // something is happening here -- it is not being set synchronously
+    res.json({
       message: { leftTable: leftTableResponse, rightTable: rightTableResponse },
-    };
-    res.json(response);
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

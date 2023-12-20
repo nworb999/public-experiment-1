@@ -15,11 +15,13 @@ router.post("/start", (req, res) => {
 });
 
 router.post("/memory", (req, res) => {
+  // console.log(req.body.memory);
   const memory = req.body.memory;
   if (game) {
     console.log(
-      `${new Date().toISOString()} :: setting memory : `,
-      Object.keys(memory).length
+      `${new Date().toISOString()} :: setting ${
+        Object.keys(memory).length
+      } memories to gameState`
     );
     game.setMemory(memory);
     res.json({ message: "memory set" });
@@ -39,7 +41,9 @@ router.get("/state", (req, res) => {
 router.post("/conversation", (req, res) => {
   const conversation = req.body.conversation;
   if (game) {
-    console.log(`${new Date().toISOString()} :: setting conversation`);
+    console.log(
+      `${new Date().toISOString()} :: setting conversation ${conversation}`
+    );
 
     game.setConversation(conversation);
   } else {
