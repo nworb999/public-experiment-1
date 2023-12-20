@@ -1,6 +1,6 @@
 # public experiment #1
 
-[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 a node.js-powered p5.js sketch simulating cafeteria dynamics for nine characters with different personalities
 
