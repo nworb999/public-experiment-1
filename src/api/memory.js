@@ -3,6 +3,8 @@ import { retrieveMemories, storeMemories } from "./utils.js";
 
 const router = express.Router();
 
+let game;
+
 router.get("/retrieve", (req, res) => {
   console.log(`${new Date().toISOString()} :: retrieving character memories`);
 
@@ -12,10 +14,13 @@ router.get("/retrieve", (req, res) => {
 
 router.post("/store", (req, res) => {
   const outcomes = req.body.outcomes;
-  console.log(`${new Date().toISOString()} :: storing character memories`);
   storeMemories(outcomes);
-
+  game.resetOutcomes();
   res.json({ message: "Memories stored successfully" });
 });
 
-export { router as default };
+function setGame(gameInstance) {
+  game = gameInstance;
+}
+
+export { router as default, setGame };

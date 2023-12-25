@@ -1,5 +1,6 @@
 import { refreshGameMemory, storeNewMemories } from "./memory.js";
 import { generateExpectedConversation } from "./chat.js";
+import { sleep } from "./utils.js";
 
 let gameState = { characters: [], outcomes: [] };
 let previousGameState = "";
@@ -26,24 +27,13 @@ export function fetchGameState() {
 }
 
 export function setGameMemory(memory) {
+  console.log("memory in sketch :", memory);
   fetch("/api/game/memory", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ memory }),
-  })
-    .then((response) => response.json())
-    .catch((error) => console.error("Error:", error));
-}
-
-export function setGameConversation(conversation) {
-  fetch("/api/game/conversation", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ conversation }),
   })
     .then((response) => response.json())
     .catch((error) => console.error("Error:", error));
@@ -59,25 +49,29 @@ export function drawGameState(draw) {
   }
 }
 
-export async function handleGameState() {
+export function handleGameState() {
   if (
     gameState.state === "choosingSeats" &&
     previousGameState === "conversing" &&
     gameState.outcomes.length
   ) {
+    console.log("storing new memories in handleGameState", gameState.outcomes);
     storeNewMemories(gameState.outcomes);
   }
+
   if (
     gameState.state === "conversing" &&
     previousGameState === "choosingSeats"
   ) {
-    const conversation = await generateExpectedConversation(gameState);
-    setGameConversation(conversation);
+    generateExpectedConversation(gameState);
+
     if (gameState.turn !== 1) {
       console.log("refreshing game memory in sketch");
       refreshGameMemory();
     }
+  }
 
+  if (gameState.state === "conversing" && gameState.outcomes.length) {
     startGame();
   }
 }

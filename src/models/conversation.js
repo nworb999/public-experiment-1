@@ -8,28 +8,23 @@ export class Conversation {
   }
 
   start() {
-    // rename to `converse`
-    // const topic = "the weather"; eventually pass through the actual topic
-
     let weightedScore = 5; // defaults to 5
-
-    if (
-      this.content &&
-      this.relationship &&
-      this.content[this.targetName] &&
-      this.relationship[this.targetName]
-    ) {
+    this.outcome = weightedScore;
+    if (this.content && this.content[this.targetName]) {
       const contentScore = this.content[this.targetName] || 5;
 
-      const relationshipArray = this.relationship[this.targetName] || [];
+      const relationshipArray = this.relationship
+        ? this.relationship[this.targetName] || []
+        : [];
 
       const relationshipAverage =
         relationshipArray.length > 0
           ? relationshipArray.reduce((sum, value) => sum + parseInt(value), 0) /
             relationshipArray.length
-          : 0;
+          : 1;
 
       weightedScore = contentScore * relationshipAverage;
+
       this.outcome = 1 + (weightedScore % 10);
 
       console.log(

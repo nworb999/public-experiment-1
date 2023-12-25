@@ -13,7 +13,11 @@ export class Game {
     this.entranceOrder = null;
     this.memory = {};
     this.outcomes = [];
-    this.converation = {};
+    this.conversation = {};
+  }
+
+  resetOutcomes() {
+    this.outcomes = [];
   }
 
   setMemory(memory) {
@@ -21,7 +25,7 @@ export class Game {
   }
 
   setConversation(content) {
-    this.converation = content ? content : this.converation;
+    this.conversation = content;
   }
 
   createCharacters(alignments) {
@@ -87,7 +91,6 @@ export class Game {
 
   haveInteractions(memory, content) {
     const conversations = [];
-
     [
       { side: "left", ...this.leftTable },
       { side: "right", ...this.rightTable },
@@ -148,8 +151,12 @@ export class Game {
         this.state = "conversing";
       }
     }
-    if (this.state === "conversing") {
-      this.haveInteractions(this.memory, this.converation.message);
+
+    if (
+      this.state === "conversing" &&
+      Object.entries(this.conversation).length !== 0
+    ) {
+      this.haveInteractions(this.memory, this.conversation);
     }
   }
 
@@ -160,7 +167,6 @@ export class Game {
       rightTable: this.rightTable.getState(),
       toilet: this.toilet.getState(),
       state: this.state,
-      memory: this.memory, // maybe unneeded
       turn: this.turn,
       outcomes: this.outcomes,
     };
