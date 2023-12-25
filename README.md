@@ -1,6 +1,24 @@
 # public experiment #1
 
+[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+a node.js-powered p5.js sketch simulating cafeteria dynamics for nine characters with different personalities
+
+## background
+
+**“public experiment #1"** is a multi-agent system inspired by the memory architecture in [this paper](https://arxiv.org/pdf/2304.03442.pdf).  My ultimate goal is to recreate believable human behavior in generative agents, with a focus on adding emotional and psychological mechanisms to the “reflect” process which could generate “irrational” emergent behavior from the agents. I think of this project as the first step in that direction.  It was my final project for MAT200C.
+
+I ended up focusing a lot more on the underlying architecture than the actual p5.js visualization. I created a turn-based game where agents of nine different alignments (think Chaotic Good, Lawful Evil) pick seats in a cafeteria and converse. They arrange themselves in groups of four at two tables while one leftover sits in the bathroom, and then converse about one of ten different topics, each of which they have a different affinity to. Their past relationships with each other are considered when conversation outcomes are calculated.
+Ultimately, this served as a warm-up for writing solo software again, this time in collaboration with ChatGPT.  On the one hand, the project was more work than I expected, but on the other I was able to work far faster and more efficiently than ever before thanks to AI. Even the time spent on difficult errors from hundreds of lines of unfamiliar code were outweighed by the overall productivity boost.  
+
+With more time I would like to work on the visuals. The first thing I would do is make the characters stop walking through tables on the way to their seats. The next thing I would do is compress it to look like a retro video game, with a more interesting background. I was thinking of adding a popout text bubble with summaries for each table conversation and stat bars for different relationships.
+
+
+## setup
 
 * clone the repo 
 
