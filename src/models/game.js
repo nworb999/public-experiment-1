@@ -152,9 +152,10 @@ export class Game {
       }
     }
 
-    if (this.state === "conversing" && this.conversation) {
-      // this is not getting the conversation in time
-      console.log("this conversation in update", this.conversation);
+    if (
+      this.state === "conversing" &&
+      Object.entries(this.conversation).length !== 0
+    ) {
       this.haveInteractions(this.memory, this.conversation);
     }
   }

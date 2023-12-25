@@ -24,7 +24,6 @@ router.post("/prompt", (req, res) => {
         leftTable: leftTableResponse,
         rightTable: rightTableResponse,
       };
-      console.log({ conversation });
       game.setConversation(conversation);
       res.json({
         message: `${new Date().toISOString()} :: setting conversation ${conversation}`,

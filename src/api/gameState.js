@@ -39,20 +39,6 @@ router.get("/state", (req, res) => {
   }
 });
 
-// remove
-// router.post("/conversation", (req, res) => {
-//   const conversation = req.body.conversation;
-//   if (game) {
-//     console.log(
-//       `${new Date().toISOString()} :: setting conversation ${conversation}`
-//     );
-
-//     game.setConversation(conversation);
-//   } else {
-//     res.status(400).json({ message: "conversation not set" });
-//   }
-// });
-
 function setGame(gameInstance) {
   game = gameInstance;
 }
