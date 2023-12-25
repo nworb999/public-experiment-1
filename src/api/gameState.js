@@ -7,7 +7,9 @@ let game;
 router.post("/start", (req, res) => {
   if (game) {
     console.log(`${new Date().toISOString()} :: starting game`);
+
     game.startGame();
+
     res.json({ message: "game started" });
   } else {
     res.status(400).json({ message: "game not started " });

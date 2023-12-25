@@ -6,7 +6,7 @@ import { Game } from "./src/models/game.js";
 // import { OpenAI } from "openai";
 // import { HuggingFaceChatService } from "./src/backend-services/huggingFaceService.js";
 import gameStateRouter, { setGame } from "./src/api/gameState.js";
-import memoryRouter from "./src/api/memory.js";
+import memoryRouter, { setGame as setMemoryGame } from "./src/api/memory.js";
 import chatRouter, {
   setChatService,
   setGame as setChatServiceGame,
@@ -48,6 +48,7 @@ const apiLimiter = rateLimit({
 const game = new Game(order, alignments, leftTable, rightTable, bathroom);
 setGame(game);
 setChatServiceGame(game);
+setMemoryGame(game);
 
 setInterval(() => {
   game.update();

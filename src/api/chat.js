@@ -19,15 +19,12 @@ router.post("/prompt", (req, res) => {
     const { leftTableResponse, rightTableResponse } =
       runSimpleConversationPrompts(gameState);
 
-    console.log("here is the left", leftTableResponse);
-
     if (game) {
-      console.log({ game });
       const conversation = {
         leftTable: leftTableResponse,
         rightTable: rightTableResponse,
       };
-      console.log("HERE IS THE CONVO", conversation);
+      console.log({ conversation });
       game.setConversation(conversation);
       res.json({
         message: `${new Date().toISOString()} :: setting conversation ${conversation}`,

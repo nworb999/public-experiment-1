@@ -1,6 +1,5 @@
 // would have to rewrite as async with working chatGPT!
 export function generateExpectedConversation(gameState) {
-  console.log("here we go");
   fetch("/api/chat/prompt", {
     method: "POST",
     headers: {

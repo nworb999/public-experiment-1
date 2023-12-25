@@ -1,5 +1,6 @@
 import { refreshGameMemory, storeNewMemories } from "./memory.js";
 import { generateExpectedConversation } from "./chat.js";
+import { sleep } from "./utils.js";
 
 let gameState = { characters: [], outcomes: [] };
 let previousGameState = "";
@@ -38,19 +39,6 @@ export function setGameMemory(memory) {
     .catch((error) => console.error("Error:", error));
 }
 
-export function setGameConversation(conversation) {
-  console.log("setting conversation from sketch :", conversation);
-  fetch("/api/game/conversation", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ conversation }),
-  })
-    .then((response) => response.json())
-    .catch((error) => console.error("Error:", error));
-}
-
 // utils
 export function drawGameState(draw) {
   if (gameState.leftTable && gameState.rightTable && gameState.toilet) {
@@ -79,10 +67,11 @@ export function handleGameState() {
 
     if (gameState.turn !== 1) {
       console.log("refreshing game memory in sketch");
-
       refreshGameMemory();
     }
+  }
 
+  if (gameState.state === "conversing" && gameState.outcomes.length) {
     startGame();
   }
 }

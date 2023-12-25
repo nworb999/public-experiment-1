@@ -13,7 +13,11 @@ export class Game {
     this.entranceOrder = null;
     this.memory = {};
     this.outcomes = [];
-    this.converation = {};
+    this.conversation = {};
+  }
+
+  resetOutcomes() {
+    this.outcomes = [];
   }
 
   setMemory(memory) {
@@ -21,7 +25,7 @@ export class Game {
   }
 
   setConversation(content) {
-    this.converation = content ? content : this.converation;
+    this.conversation = content;
   }
 
   createCharacters(alignments) {
@@ -120,7 +124,6 @@ export class Game {
         });
       });
     });
-    // console.log(conversations);
     this.outcomes = conversations;
   }
 
@@ -148,11 +151,11 @@ export class Game {
         this.state = "conversing";
       }
     }
+
     if (this.state === "conversing" && this.conversation) {
       // this is not getting the conversation in time
-      console.log("this conversation in update", this.converation);
+      console.log("this conversation in update", this.conversation);
       this.haveInteractions(this.memory, this.conversation);
-      this.conversation = null;
     }
   }
 

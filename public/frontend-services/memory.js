@@ -31,9 +31,7 @@ export function readMemoryData() {
 
 // utils
 export function refreshGameMemory() {
-  console.log("from util, old memory:", memory);
   readMemoryData();
-  console.log("from util, new memory:", memory);
   // set memory here?
   console.log("setting game memory from refresh game memory", memory);
   setGameMemory(memory);
