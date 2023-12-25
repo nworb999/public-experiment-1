@@ -12,11 +12,7 @@ router.get("/retrieve", (req, res) => {
 
 router.post("/store", (req, res) => {
   const outcomes = req.body.outcomes;
-  console.log(
-    `${new Date().toISOString()} :: storing character memories ${outcomes}`
-  );
   storeMemories(outcomes);
-
   res.json({ message: "Memories stored successfully" });
 });
 

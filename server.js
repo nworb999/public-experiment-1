@@ -7,7 +7,10 @@ import { Game } from "./src/models/game.js";
 // import { HuggingFaceChatService } from "./src/backend-services/huggingFaceService.js";
 import gameStateRouter, { setGame } from "./src/api/gameState.js";
 import memoryRouter from "./src/api/memory.js";
-import chatRouter, { setChatService } from "./src/api/chat.js";
+import chatRouter, {
+  setChatService,
+  setGame as setChatServiceGame,
+} from "./src/api/chat.js";
 import {
   ascii,
   order,
@@ -21,6 +24,7 @@ import { SimpleChatService } from "./src/backend-services/simpleService.js";
 
 dotenv.config();
 
+// real chat services here
 // const openai = new OpenAI(process.env.OPENAI_API_KEY);
 // const openAIChatService = new OpenAIChatService(openai);
 
@@ -37,12 +41,13 @@ const port = 3000;
 const updateInterval = 50;
 
 const apiLimiter = rateLimit({
-  limit: 100, // Max 100 requests
+  limit: 100, // max 100 requests
   windowMs: 15 * 60 * 1000, // 15 minutes window
 });
 
 const game = new Game(order, alignments, leftTable, rightTable, bathroom);
 setGame(game);
+setChatServiceGame(game);
 
 setInterval(() => {
   game.update();

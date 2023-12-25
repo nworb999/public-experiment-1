@@ -6,23 +6,33 @@ const router = express.Router();
 
 export let chatService = new ChatService();
 
+let game;
+
 router.post("/prompt", (req, res) => {
   try {
     const gameState = req.body.gameState;
 
-    // for use with not simple chat services
+    // (for use with not simple chat services)
     // const { leftTableResponse, rightTableResponse } =
     //   runConversationPrompts(gameState);
 
     const { leftTableResponse, rightTableResponse } =
       runSimpleConversationPrompts(gameState);
-    console.log(`${new Date().toISOString()} returning  prompt responses`);
-    console.log({ leftTableResponse });
-    console.log({ rightTableResponse });
-    // something is happening here -- it is not being set synchronously
-    res.json({
-      message: { leftTable: leftTableResponse, rightTable: rightTableResponse },
-    });
+
+    console.log("here is the left", leftTableResponse);
+
+    if (game) {
+      console.log({ game });
+      const conversation = {
+        leftTable: leftTableResponse,
+        rightTable: rightTableResponse,
+      };
+      console.log("HERE IS THE CONVO", conversation);
+      game.setConversation(conversation);
+      res.json({
+        message: `${new Date().toISOString()} :: setting conversation ${conversation}`,
+      });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -30,6 +40,10 @@ router.post("/prompt", (req, res) => {
 
 export function setChatService(service) {
   chatService = service;
+}
+
+export function setGame(gameInstance) {
+  game = gameInstance;
 }
 
 export { router as default };

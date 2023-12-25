@@ -75,10 +75,7 @@ export function handleGameState() {
     gameState.state === "conversing" &&
     previousGameState === "choosingSeats"
   ) {
-    console.log("generating expected convo with", gameState);
-    const conversation = generateExpectedConversation(gameState);
-    console.log("setting expected convo", conversation);
-    setGameConversation(conversation);
+    generateExpectedConversation(gameState);
 
     if (gameState.turn !== 1) {
       console.log("refreshing game memory in sketch");

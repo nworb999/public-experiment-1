@@ -26,7 +26,6 @@ export function runSimpleConversationPrompts(gameState) {
         }) => name
       )
     );
-
   const leftTableResponse = chatService.sendPrompt({
     characters: leftTableAffinities,
     topic: leftTableTopic,
@@ -36,6 +35,7 @@ export function runSimpleConversationPrompts(gameState) {
     characters: rightTableAffinities,
     topic: rightTableTopic,
   });
+
   return { leftTableResponse, rightTableResponse };
 }
 

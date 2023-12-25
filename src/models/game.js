@@ -87,7 +87,6 @@ export class Game {
 
   haveInteractions(memory, content) {
     const conversations = [];
-
     [
       { side: "left", ...this.leftTable },
       { side: "right", ...this.rightTable },
@@ -121,7 +120,7 @@ export class Game {
         });
       });
     });
-    console.log(conversations);
+    // console.log(conversations);
     this.outcomes = conversations;
   }
 
@@ -149,8 +148,11 @@ export class Game {
         this.state = "conversing";
       }
     }
-    if (this.state === "conversing") {
-      this.haveInteractions(this.memory, this.converation.message);
+    if (this.state === "conversing" && this.conversation) {
+      // this is not getting the conversation in time
+      console.log("this conversation in update", this.converation);
+      this.haveInteractions(this.memory, this.conversation);
+      this.conversation = null;
     }
   }
 
@@ -161,7 +163,6 @@ export class Game {
       rightTable: this.rightTable.getState(),
       toilet: this.toilet.getState(),
       state: this.state,
-      // memory: this.memory, // maybe unneeded
       turn: this.turn,
       outcomes: this.outcomes,
     };

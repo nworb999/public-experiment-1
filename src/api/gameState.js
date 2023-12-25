@@ -15,7 +15,6 @@ router.post("/start", (req, res) => {
 });
 
 router.post("/memory", (req, res) => {
-  // console.log(req.body.memory);
   const memory = req.body.memory;
   if (game) {
     console.log(
@@ -38,18 +37,19 @@ router.get("/state", (req, res) => {
   }
 });
 
-router.post("/conversation", (req, res) => {
-  const conversation = req.body.conversation;
-  if (game) {
-    console.log(
-      `${new Date().toISOString()} :: setting conversation ${conversation}`
-    );
+// remove
+// router.post("/conversation", (req, res) => {
+//   const conversation = req.body.conversation;
+//   if (game) {
+//     console.log(
+//       `${new Date().toISOString()} :: setting conversation ${conversation}`
+//     );
 
-    game.setConversation(conversation);
-  } else {
-    res.status(400).json({ message: "conversation not set" });
-  }
-});
+//     game.setConversation(conversation);
+//   } else {
+//     res.status(400).json({ message: "conversation not set" });
+//   }
+// });
 
 function setGame(gameInstance) {
   game = gameInstance;

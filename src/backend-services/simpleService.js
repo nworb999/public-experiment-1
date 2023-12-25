@@ -25,7 +25,6 @@ export class SimpleChatService extends ChatService {
         }
       }
     }
-    console.log("simple service scores", scores);
     return scores;
   }
 }
