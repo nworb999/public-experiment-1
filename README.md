@@ -30,13 +30,11 @@ everything in the `public` repo is used by p5.js client (it has to be there for 
 
 everything in the `src` repo is used by the server
 
+### early diagram
 ![first](https://github.com/nworb999/public-experiment-1/assets/20407156/7b9ec7ab-5116-4a2d-82dc-9e6db3b3a5eb)
 
+### software diagram
 ![software-diagram](https://github.com/nworb999/public-experiment-1/assets/20407156/bb48c43a-dc0a-4d88-ac6b-689be801abe3)
-
-<img width="1512" alt="broken-state-1" src="https://github.com/nworb999/public-experiment-1/assets/20407156/1cab66a9-c965-4815-822e-2ec30e1c3245">
-
-![broken-state-2](https://github.com/nworb999/public-experiment-1/assets/20407156/28bd9914-25a5-47b9-80cb-02390075b4c5)
 
 ## known issues
 
@@ -44,10 +42,10 @@ not working with any chat services other than simple service
 
 ## reflections
 
-debugging was a pain with unfamiliar code
-should have started with all layers (api, domain model, frontend/backend services) then added game logic + p5.js draw logic
-should have realized sooner that chatGPT was not going to be an option without $$$
-created issues with async handling that never got resolved but will have to be considered (waiting to store memories for the conversation results)
+* debugging was a pain with unfamiliar code
+* I should have started with all layers stubbed out (api, domain model, frontend/backend services) then added game logic + p5.js draw logic
+* I should have realized sooner that chatGPT was not going to be an option without $$$ or setting up ollama on the shared server (which required a lot of cleanup)
+* I created issues with async handling + p5.js that never got resolved but will have to be considered (waiting to store memories for the conversation results)
 
 ## debugging
 
